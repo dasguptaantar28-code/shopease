@@ -1,4 +1,4 @@
-import { Category, Product, Coupon, StoreSettings, Review, Order, OrderItem } from "../types";
+import { Category, Product, Coupon, StoreSettings, Review, Order } from "../types";
 import { DEMO_CATEGORIES, DEMO_PRODUCTS, DEMO_COUPONS, DEMO_REVIEWS, DEFAULT_STORE_SETTINGS } from "./demo-data";
 import { isSupabaseConfigured, getSupabaseConfig } from "../supabase/env";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
@@ -9,7 +9,7 @@ function getClient() {
 }
 
 // In-memory runtime persistence for orders & store during demo/fallback mode
-let fallbackOrders: Order[] = [
+const fallbackOrders: Order[] = [
   {
     id: "ord-demo-1001",
     order_number: "SE-92810",
@@ -103,9 +103,9 @@ let fallbackOrders: Order[] = [
   },
 ];
 
-let fallbackProducts: Product[] = [...DEMO_PRODUCTS];
-let fallbackCategories: Category[] = [...DEMO_CATEGORIES];
-let fallbackReviews: Review[] = [...DEMO_REVIEWS];
+const fallbackProducts: Product[] = [...DEMO_PRODUCTS];
+const fallbackCategories: Category[] = [...DEMO_CATEGORIES];
+const fallbackReviews: Review[] = [...DEMO_REVIEWS];
 let fallbackSettings: StoreSettings = { ...DEFAULT_STORE_SETTINGS };
 
 export interface ProductFilters {
